@@ -121,18 +121,12 @@
   </main>
 
     <script>
-    const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     document.querySelectorAll('.grid-item').forEach(item => {
       const video = item.querySelector('video');
       if (!video) return;
-      if (supportsHover) {
-        item.addEventListener('mouseenter', () => video.play());
-        item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
-      } else {
-        item.addEventListener('touchstart', () => {
-          video.paused ? video.play() : (video.pause(), video.currentTime = 0);
-        }, { passive: true });
-      }
+      video.play();
+      item.addEventListener('mouseenter', () => video.pause());
+      item.addEventListener('mouseleave', () => video.play());
     });
   </script>
 </body>
