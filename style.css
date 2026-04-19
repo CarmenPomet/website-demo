@@ -383,15 +383,14 @@ header {
 }
 
 .col-date     { width: 18%; }
-.col-location { width: 28%; white-space: nowrap; }
-.col-what     { width: 30%; }
-.col-who      { width: 24%; }
+.col-location { width: 27%; }
+.col-what     { width: 27%; }
+.col-who      { width: 28%; }
 
 .sub {
-  font-style: italic;
   font-size: var(--fs-0);
   display: block;
-  opacity: 0.85;
+  opacity: 0.65;
 }
 
 /* mobile */
