@@ -17,6 +17,15 @@
       margin-top: 4rem;
     }
 
+    @media (max-width: 600px) {
+      .flex-container {
+        grid-template-columns: 1fr;
+      }
+      .grid-item {
+        font-size: 1rem;
+      }
+    }
+
     .grid-item {
       background-color: rgba(205, 230, 193, 0.906);
       border: 1px solid var(--muted);
@@ -99,12 +108,17 @@
     </div>
   </main>
 
-  <script>
+    <script>
+    const isTouchDevice = window.matchMedia('(hover: none)').matches;
     document.querySelectorAll('.grid-item').forEach(item => {
       const video = item.querySelector('video');
       if (!video) return;
-      item.addEventListener('mouseenter', () => video.play());
-      item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+      if (isTouchDevice) {
+        video.play();
+      } else {
+        item.addEventListener('mouseenter', () => video.play());
+        item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+      }
     });
   </script>
 </body>
