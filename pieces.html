@@ -17,12 +17,24 @@
       margin-top: 4rem;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 900px) {
       .flex-container {
         grid-template-columns: 1fr;
       }
       .grid-item {
         font-size: 1rem;
+      }
+      .grid-item img,
+      .grid-item video {
+        height: 240px;
+      }
+      .grid-item:hover {
+        transform: none;
+        box-shadow: none;
+      }
+      .grid-item:hover img,
+      .grid-item:hover video {
+        transform: none;
       }
     }
 
@@ -109,15 +121,17 @@
   </main>
 
     <script>
-    const isTouchDevice = window.matchMedia('(hover: none)').matches;
+    const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     document.querySelectorAll('.grid-item').forEach(item => {
       const video = item.querySelector('video');
       if (!video) return;
-      if (isTouchDevice) {
-        video.play();
-      } else {
+      if (supportsHover) {
         item.addEventListener('mouseenter', () => video.play());
         item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+      } else {
+        item.addEventListener('touchstart', () => {
+          video.paused ? video.play() : (video.pause(), video.currentTime = 0);
+        }, { passive: true });
       }
     });
   </script>
