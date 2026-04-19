@@ -121,10 +121,18 @@
   </main>
 
     <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) video.play().catch(() => {});
+        else video.pause();
+      });
+    }, { threshold: 0.3 });
+
     document.querySelectorAll('.grid-item').forEach(item => {
       const video = item.querySelector('video');
       if (!video) return;
-      video.play().catch(() => {});
+      observer.observe(video);
       item.addEventListener('mouseenter', () => video.pause());
       item.addEventListener('mouseleave', () => video.play().catch(() => {}));
     });
