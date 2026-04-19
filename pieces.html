@@ -14,7 +14,6 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
-      margin-top: 4rem;
     }
 
     @media (max-width: 900px) {
@@ -39,7 +38,7 @@
     }
 
     .grid-item {
-      background-color: rgba(205, 230, 193, 0.906);
+      background-color: rgba(247, 249, 246, 0.906);
       border: 1px solid var(--muted);
       padding: 1.5rem;
       display: flex;
@@ -54,7 +53,7 @@
 
     .grid-item:hover {
       transform: scale(1.08);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 1px 30px rgba(0,0,0,0.3);
     }
     .grid-item img,
     .grid-item video {
@@ -62,19 +61,34 @@
       height: 200px;
       object-fit: cover;
       margin-top: 1rem;
-      border: 1px solid var(--muted);
+      border: 0.1px solid var(--muted);
 
-      transition: transform 0.2s ease;
+      transition: transform 0.1s ease;
     }
 
     .grid-item:hover img,
     .grid-item:hover video {
-      transform: scale(1.28);
+      transform: scale(1.08);
     }
 
     .top-nav {
       text-align: center;
       margin-top: 1rem;
+    }
+
+    .section {
+      margin-top: 3.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: 0.4rem;
+      margin-bottom: 2rem;
     }
   </style>
 </head>
@@ -90,39 +104,52 @@
       </nav>
     </header>
 
-    <div class="flex-container">
+    <div class="section">
+      <p class="section-title">Performances & Live Art</p>
+      <div class="flex-container">
+        <a href="dubistfit.html" class="grid-item"> Du bist fit! [2025]
+          <video autoplay loop muted playsinline>
+            <source src="mp4/sc.mp4" type="video/mp4">
+          </video>
+        </a>
+        <a href="stereotype.html" class="grid-item"> Stereotype Threat [2024-2025]
+          <video autoplay loop muted playsinline style="object-fit: contain; background: black;">
+            <source src="mp4/car.mp4" type="video/mp4">
+          </video>
+        </a>
+        <a href="mirrorofwounds.html" class="grid-item"> Mirror of Wounds [2023-2024]
+          <video autoplay loop muted playsinline style="object-fit: contain; background: black;">
+            <source src="mp4/intro-mirror.mp4" type="video/mp4">
+          </video>
+        </a>
+      </div>
+    </div>
 
-      <a href="stereotype.html" class="grid-item"  weight="100" height="100">  Stereotype Threat [2024-2025]
-        <video autoplay loop muted playsinline style="object-fit: contain; background: black;">
-          <source src="mp4/car.mp4" type = "video/mp4">
-        </video>
-      </a>
-      <a href="mut.html" class="grid-item" weight="100" height="100"> MUT [2025]
-        <video autoplay loop muted playsinline>
-          <source src="mp4/mut-start.mp4" type="video/mp4">
-        </video>
-      </a>
-      <a href="mirrorofwounds.html" class="grid-item"  weight="100" height="100">  Mirror of Wounds [2023-2024]
-        <video autoplay loop muted playsinline style="object-fit: contain; background: black;">
-          <source src="mp4/intro-mirror.mp4" type = "video/mp4">
-        </video>
-      </a>
-      <a href="dubistfit.html" class="grid-item"  weight="100" height="100">  Du bist fit! [2025]
-        <video autoplay loop muted playsinline>
-          <source src="mp4/sc.mp4" type="video/mp4">
-        </video>
-      </a>
-      <a href="oneyearthirtyseconds.html" class="grid-item"  weight="100" height="100">  ONE YEAR THIRTY SECONDS [2025]
-        <video autoplay loop muted playsinline>
-          <source src="mp4/rocks.mp4" type = "video/mp4">
-        </video>
-      </a>
-      <a href="radio.html" class="grid-item"  weight="100" height="100">  WEISS / WEISSLICH 7a: Rauschempfänger [2026]
-        <video autoplay loop muted playsinline>
-          <source src="mp4/radio-intro.mp4" type = "video/mp4">
-        </video>
-      </a>
+    <div class="section">
+      <p class="section-title">Installation Art</p>
+      <div class="flex-container">
+        <a href="mut.html" class="grid-item"> MUT [2025]
+          <video autoplay loop muted playsinline>
+            <source src="mp4/mut-start.mp4" type="video/mp4">
+          </video>
+        </a>
+        <a href="radio.html" class="grid-item"> WEISS / WEISSLICH 7a: Rauschempfänger [2026]
+          <video autoplay loop muted playsinline>
+            <source src="mp4/radio-intro.mp4" type="video/mp4">
+          </video>
+        </a>
+      </div>
+    </div>
 
+    <div class="section">
+      <p class="section-title">Time-Based & Media Art</p>
+      <div class="flex-container">
+        <a href="oneyearthirtyseconds.html" class="grid-item"> ONE YEAR THIRTY SECONDS [2025]
+          <video autoplay loop muted playsinline>
+            <source src="mp4/rocks.mp4" type="video/mp4">
+          </video>
+        </a>
+      </div>
     </div>
   </main>
 
@@ -151,5 +178,6 @@
     videos.forEach(v => v.play().catch(() => {}));
   }, { once: true });
 </script>
+<script src="script.js"></script>
 </body>
 </html>
