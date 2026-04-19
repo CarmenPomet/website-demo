@@ -92,27 +92,27 @@
 
     <div class="flex-container">
       <a href="stereotype.html" class="grid-item"  weight="100" height="100">  Stereotype Threat [2024-2025]
-        <video loop muted playsinline style="object-fit: contain; background: black;">
+        <video autoplay loop muted playsinline style="object-fit: contain; background: black;">
           <source src="mp4/car.mp4" type = "video/mp4">
         </video>
       </a>
       <a href="mut.html" class="grid-item" weight="100" height="100"> MUT [2025]
-        <video loop muted playsinline>
+        <video autoplay loop muted playsinline>
           <source src="mp4/mut-start.mp4" type="video/mp4">
         </video>
       </a>
       <a href="dubistfit.html" class="grid-item"  weight="100" height="100">  Du bist fit! [2025]
-        <video loop muted playsinline>
+        <video autoplay loop muted playsinline>
           <source src="mp4/sc.mp4" type="video/mp4">
         </video>
       </a>
       <a href="oneyearthirtyseconds.html" class="grid-item"  weight="100" height="100">  ONE YEAR THIRTY SECONDS [2025]
-        <video loop muted playsinline>
+        <video autoplay loop muted playsinline>
           <source src="mp4/rocks.mp4" type = "video/mp4">
         </video>
       </a>
       <a href="radio.html" class="grid-item"  weight="100" height="100">  WEISS / WEISSLICH 7a: Rauschempfänger [2026]
-        <video loop muted playsinline>
+        <video autoplay loop muted playsinline>
           <source src="mp4/radio-intro.mp4" type = "video/mp4">
         </video>
       </a>
@@ -124,9 +124,9 @@
     document.querySelectorAll('.grid-item').forEach(item => {
       const video = item.querySelector('video');
       if (!video) return;
-      video.play();
+      video.play().catch(() => {});
       item.addEventListener('mouseenter', () => video.pause());
-      item.addEventListener('mouseleave', () => video.play());
+      item.addEventListener('mouseleave', () => video.play().catch(() => {}));
     });
   </script>
 </body>
