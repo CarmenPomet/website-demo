@@ -126,28 +126,30 @@
     </div>
   </main>
 
-    <script>
-  // Attempt autoplay on all videos
-  function tryPlayAll() {
-    document.querySelectorAll('video').forEach(video => {
-      video.muted = true; // ensure muted is set via JS too
-      video.play().catch(() => {});
+<script>
+  const videos = document.querySelectorAll('video');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target;
+      if (entry.isIntersecting) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
     });
-  }
+  }, { threshold: 0.25 });
 
-  // Try immediately
-  document.addEventListener('DOMContentLoaded', tryPlayAll);
-
-  // Also try on first touch (iOS often needs this)
-  document.addEventListener('touchstart', tryPlayAll, { once: true });
-
-  // Hover pause/resume (your existing logic)
-  document.querySelectorAll('.grid-item').forEach(item => {
-    const video = item.querySelector('video');
-    if (!video) return;
-    item.addEventListener('mouseenter', () => video.pause());
-    item.addEventListener('mouseleave', () => video.play().catch(() => {}));
+  videos.forEach(video => {
+    video.muted = true;
+    video.setAttribute('playsinline', '');
+    observer.observe(video);
   });
+
+  // Unlock on first touch
+  document.addEventListener('touchstart', () => {
+    videos.forEach(v => v.play().catch(() => {}));
+  }, { once: true });
 </script>
 </body>
 </html>
